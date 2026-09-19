@@ -1,0 +1,547 @@
+#!name=HK Direct Override
+#!desc=Aggressive Hong Kong DIRECT override. Unknown traffic still falls through to the main config, so FINAL,PROXY remains the safety net for unrecognised services.
+
+[Rule]
+
+# =========================================================
+# SAFETY PRINCIPLE
+# =========================================================
+# This module aggressively DIRECTs services normally reachable in Hong Kong.
+# It intentionally avoids broad shared-cloud rules (Cloudflare/AWS/Fastly IP ranges).
+# OpenAI / ChatGPT / Anthropic / Claude are intentionally NOT added.
+# Unknown domains fall through to the main config and therefore still hit FINAL,PROXY.
+
+
+# =========================================================
+# Hong Kong banking / payments / finance
+# (extra coverage for services that also use non-.hk domains)
+# =========================================================
+# These explicit rules complement GEOIP,HK,DIRECT in the main config.
+# They force DIRECT even when a Hong Kong service is delivered from an overseas CDN/IP.
+DOMAIN-SUFFIX,hsbc.com.hk,DIRECT
+DOMAIN-SUFFIX,hsbc.com,DIRECT
+DOMAIN-SUFFIX,hangseng.com,DIRECT
+DOMAIN-SUFFIX,bochk.com,DIRECT
+DOMAIN-SUFFIX,sc.com,DIRECT
+DOMAIN-SUFFIX,dbs.com,DIRECT
+DOMAIN-SUFFIX,citibank.com,DIRECT
+DOMAIN-SUFFIX,welab.bank,DIRECT
+DOMAIN-SUFFIX,za.group,DIRECT
+DOMAIN-SUFFIX,octopus.com,DIRECT
+DOMAIN-SUFFIX,alipayhk.com,DIRECT
+DOMAIN-SUFFIX,mpfa.org.hk,DIRECT
+DOMAIN-SUFFIX,empf.org.hk,DIRECT
+DOMAIN-SUFFIX,hkicl.com.hk,DIRECT
+
+# =========================================================
+# Hong Kong government / public / health services
+# =========================================================
+DOMAIN-SUFFIX,gov.hk,DIRECT
+DOMAIN-SUFFIX,ha.org.hk,DIRECT
+DOMAIN-SUFFIX,ehealth.gov.hk,DIRECT
+DOMAIN-SUFFIX,iamsmart.gov.hk,DIRECT
+DOMAIN-SUFFIX,1823.gov.hk,DIRECT
+DOMAIN-SUFFIX,hkpost.hk,DIRECT
+
+# =========================================================
+# Hong Kong transport / mobility
+# =========================================================
+DOMAIN-SUFFIX,mtr.com.hk,DIRECT
+DOMAIN-SUFFIX,kmb.hk,DIRECT
+DOMAIN-SUFFIX,citybus.com.hk,DIRECT
+DOMAIN-SUFFIX,hongkongairport.com,DIRECT
+DOMAIN-SUFFIX,cathaypacific.com,DIRECT
+DOMAIN-SUFFIX,hkexpress.com,DIRECT
+
+# =========================================================
+# Hong Kong utilities / telecoms
+# =========================================================
+DOMAIN-SUFFIX,clp.com.hk,DIRECT
+DOMAIN-SUFFIX,hkelectric.com,DIRECT
+DOMAIN-SUFFIX,towngas.com,DIRECT
+DOMAIN-SUFFIX,hkt.com,DIRECT
+DOMAIN-SUFFIX,hkbn.net,DIRECT
+DOMAIN-SUFFIX,hkcsl.com,DIRECT
+DOMAIN-SUFFIX,smartone.com,DIRECT
+
+# =========================================================
+# Hong Kong daily-life services
+# =========================================================
+DOMAIN-SUFFIX,openrice.com,DIRECT
+DOMAIN-SUFFIX,foodpanda.hk,DIRECT
+DOMAIN-SUFFIX,price.com.hk,DIRECT
+DOMAIN-SUFFIX,carousell.com.hk,DIRECT
+DOMAIN-SUFFIX,parknshop.com,DIRECT
+DOMAIN-SUFFIX,wellcome.com.hk,DIRECT
+DOMAIN-SUFFIX,mannings.com.hk,DIRECT
+DOMAIN-SUFFIX,watsons.com.hk,DIRECT
+
+# =========================================================
+# Apple Intelligence / Siri — exact PCC/Siri endpoints
+# =========================================================
+DOMAIN,guzzoni.apple.com,DIRECT
+DOMAIN-SUFFIX,smoot.apple.com,DIRECT
+DOMAIN,apple-relay.cloudflare.com,DIRECT
+DOMAIN,apple-relay.fastly-edge.com,DIRECT
+DOMAIN,cp4.cloudflare.com,DIRECT
+DOMAIN,apple-relay.apple.com,DIRECT
+
+# Apple domain-set (domain-only; no broad Apple IP-range override)
+DOMAIN-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Apple/Apple_Domain.list,DIRECT
+
+# =========================================================
+# Apple ecosystem / Apple Intelligence / Siri
+# =========================================================
+DOMAIN-SUFFIX,apple.com,DIRECT
+DOMAIN-SUFFIX,icloud.com,DIRECT
+DOMAIN-SUFFIX,icloud-content.com,DIRECT
+DOMAIN-SUFFIX,me.com,DIRECT
+DOMAIN-SUFFIX,mzstatic.com,DIRECT
+DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
+DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
+DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+DOMAIN-SUFFIX,aaplimg.com,DIRECT
+
+# =========================================================
+# Google / Gemini / YouTube
+# =========================================================
+DOMAIN-SUFFIX,google.com,DIRECT
+DOMAIN-SUFFIX,google.hk,DIRECT
+DOMAIN-SUFFIX,googleapis.com,DIRECT
+DOMAIN-SUFFIX,gstatic.com,DIRECT
+DOMAIN-SUFFIX,googleusercontent.com,DIRECT
+DOMAIN-SUFFIX,ggpht.com,DIRECT
+DOMAIN-SUFFIX,googlevideo.com,DIRECT
+DOMAIN-SUFFIX,youtube.com,DIRECT
+DOMAIN-SUFFIX,youtube-nocookie.com,DIRECT
+DOMAIN-SUFFIX,youtu.be,DIRECT
+DOMAIN-SUFFIX,ytimg.com,DIRECT
+DOMAIN-SUFFIX,google.dev,DIRECT
+DOMAIN-SUFFIX,deepmind.com,DIRECT
+DOMAIN-SUFFIX,deepmind.google,DIRECT
+DOMAIN-SUFFIX,generativeai.google,DIRECT
+DOMAIN-SUFFIX,googlesyndication.com,DIRECT
+DOMAIN-SUFFIX,googleadservices.com,DIRECT
+DOMAIN-SUFFIX,doubleclick.net,DIRECT
+
+# =========================================================
+# Microsoft / Office / OneDrive / Bing
+# =========================================================
+DOMAIN-SUFFIX,microsoft.com,DIRECT
+DOMAIN-SUFFIX,microsoftonline.com,DIRECT
+DOMAIN-SUFFIX,office.com,DIRECT
+DOMAIN-SUFFIX,office.net,DIRECT
+DOMAIN-SUFFIX,office365.com,DIRECT
+DOMAIN-SUFFIX,live.com,DIRECT
+DOMAIN-SUFFIX,live.net,DIRECT
+DOMAIN-SUFFIX,outlook.com,DIRECT
+DOMAIN-SUFFIX,hotmail.com,DIRECT
+DOMAIN-SUFFIX,onedrive.com,DIRECT
+DOMAIN-SUFFIX,sharepoint.com,DIRECT
+DOMAIN-SUFFIX,windows.com,DIRECT
+DOMAIN-SUFFIX,windows.net,DIRECT
+DOMAIN-SUFFIX,azure.com,DIRECT
+DOMAIN-SUFFIX,azureedge.net,DIRECT
+DOMAIN-SUFFIX,bing.com,DIRECT
+DOMAIN-SUFFIX,msn.com,DIRECT
+DOMAIN-SUFFIX,skype.com,DIRECT
+DOMAIN-SUFFIX,teams.microsoft.com,DIRECT
+DOMAIN-SUFFIX,microsoft365.com,DIRECT
+
+# =========================================================
+# GitHub / developer hosting
+# =========================================================
+DOMAIN-SUFFIX,github.com,DIRECT
+DOMAIN-SUFFIX,githubusercontent.com,DIRECT
+DOMAIN-SUFFIX,githubassets.com,DIRECT
+DOMAIN-SUFFIX,github.io,DIRECT
+DOMAIN-SUFFIX,githubstatus.com,DIRECT
+DOMAIN-SUFFIX,ghcr.io,DIRECT
+DOMAIN-SUFFIX,githubcopilot.com,DIRECT
+DOMAIN-SUFFIX,gitlab.com,DIRECT
+DOMAIN-SUFFIX,gitlab.io,DIRECT
+DOMAIN-SUFFIX,bitbucket.org,DIRECT
+DOMAIN-SUFFIX,atlassian.com,DIRECT
+DOMAIN-SUFFIX,npmjs.com,DIRECT
+DOMAIN-SUFFIX,npmjs.org,DIRECT
+DOMAIN-SUFFIX,pypi.org,DIRECT
+DOMAIN-SUFFIX,pythonhosted.org,DIRECT
+DOMAIN-SUFFIX,rubygems.org,DIRECT
+DOMAIN-SUFFIX,packagist.org,DIRECT
+DOMAIN-SUFFIX,docker.com,DIRECT
+DOMAIN-SUFFIX,docker.io,DIRECT
+DOMAIN-SUFFIX,dockerhub.com,DIRECT
+DOMAIN-SUFFIX,maven.org,DIRECT
+DOMAIN-SUFFIX,maven.apache.org,DIRECT
+DOMAIN-SUFFIX,apache.org,DIRECT
+DOMAIN-SUFFIX,kernel.org,DIRECT
+DOMAIN-SUFFIX,gnu.org,DIRECT
+DOMAIN-SUFFIX,sourceforge.net,DIRECT
+
+# =========================================================
+# Developer docs / Q&A / coding
+# =========================================================
+DOMAIN-SUFFIX,stackoverflow.com,DIRECT
+DOMAIN-SUFFIX,stackexchange.com,DIRECT
+DOMAIN-SUFFIX,serverfault.com,DIRECT
+DOMAIN-SUFFIX,superuser.com,DIRECT
+DOMAIN-SUFFIX,askubuntu.com,DIRECT
+DOMAIN-SUFFIX,stackprinter.appspot.com,DIRECT
+DOMAIN-SUFFIX,mdn.mozilla.org,DIRECT
+DOMAIN-SUFFIX,mozilla.org,DIRECT
+DOMAIN-SUFFIX,rust-lang.org,DIRECT
+DOMAIN-SUFFIX,golang.org,DIRECT
+DOMAIN-SUFFIX,go.dev,DIRECT
+DOMAIN-SUFFIX,nodejs.org,DIRECT
+DOMAIN-SUFFIX,php.net,DIRECT
+DOMAIN-SUFFIX,r-project.org,DIRECT
+DOMAIN-SUFFIX,cran.r-project.org,DIRECT
+DOMAIN-SUFFIX,posit.co,DIRECT
+DOMAIN-SUFFIX,jupyter.org,DIRECT
+DOMAIN-SUFFIX,anaconda.com,DIRECT
+DOMAIN-SUFFIX,conda.io,DIRECT
+DOMAIN-SUFFIX,kaggle.com,DIRECT
+DOMAIN-SUFFIX,huggingface.co,DIRECT
+DOMAIN-SUFFIX,paperswithcode.com,DIRECT
+DOMAIN-SUFFIX,colab.research.google.com,DIRECT
+
+# =========================================================
+# Research publishers / journal platforms
+# =========================================================
+DOMAIN-SUFFIX,sciencedirect.com,DIRECT
+DOMAIN-SUFFIX,elsevier.com,DIRECT
+DOMAIN-SUFFIX,scopus.com,DIRECT
+DOMAIN-SUFFIX,mendeley.com,DIRECT
+DOMAIN-SUFFIX,springer.com,DIRECT
+DOMAIN-SUFFIX,springernature.com,DIRECT
+DOMAIN-SUFFIX,nature.com,DIRECT
+DOMAIN-SUFFIX,biomedcentral.com,DIRECT
+DOMAIN-SUFFIX,wiley.com,DIRECT
+DOMAIN-SUFFIX,sagepub.com,DIRECT
+DOMAIN-SUFFIX,tandfonline.com,DIRECT
+DOMAIN-SUFFIX,oup.com,DIRECT
+DOMAIN-SUFFIX,cambridge.org,DIRECT
+DOMAIN-SUFFIX,jstor.org,DIRECT
+DOMAIN-SUFFIX,apa.org,DIRECT
+DOMAIN-SUFFIX,psycnet.apa.org,DIRECT
+DOMAIN-SUFFIX,bmj.com,DIRECT
+DOMAIN-SUFFIX,thelancet.com,DIRECT
+DOMAIN-SUFFIX,nejm.org,DIRECT
+DOMAIN-SUFFIX,jamanetwork.com,DIRECT
+DOMAIN-SUFFIX,psychiatryonline.org,DIRECT
+DOMAIN-SUFFIX,cell.com,DIRECT
+DOMAIN-SUFFIX,science.org,DIRECT
+DOMAIN-SUFFIX,aaas.org,DIRECT
+DOMAIN-SUFFIX,plos.org,DIRECT
+DOMAIN-SUFFIX,frontiersin.org,DIRECT
+DOMAIN-SUFFIX,mdpi.com,DIRECT
+DOMAIN-SUFFIX,hindawi.com,DIRECT
+DOMAIN-SUFFIX,annualreviews.org,DIRECT
+DOMAIN-SUFFIX,pnas.org,DIRECT
+DOMAIN-SUFFIX,royalsocietypublishing.org,DIRECT
+DOMAIN-SUFFIX,rsc.org,DIRECT
+DOMAIN-SUFFIX,acs.org,DIRECT
+DOMAIN-SUFFIX,iop.org,DIRECT
+DOMAIN-SUFFIX,iopscience.iop.org,DIRECT
+DOMAIN-SUFFIX,ieee.org,DIRECT
+DOMAIN-SUFFIX,ieeeexplore.ieee.org,DIRECT
+DOMAIN-SUFFIX,acm.org,DIRECT
+DOMAIN-SUFFIX,dl.acm.org,DIRECT
+DOMAIN-SUFFIX,karger.com,DIRECT
+DOMAIN-SUFFIX,embopress.org,DIRECT
+DOMAIN-SUFFIX,projecteuclid.org,DIRECT
+
+# =========================================================
+# Research databases / discovery / identifiers
+# =========================================================
+DOMAIN-SUFFIX,nih.gov,DIRECT
+DOMAIN-SUFFIX,ncbi.nlm.nih.gov,DIRECT
+DOMAIN-SUFFIX,clinicaltrials.gov,DIRECT
+DOMAIN-SUFFIX,cochrane.org,DIRECT
+DOMAIN-SUFFIX,cochranelibrary.com,DIRECT
+DOMAIN-SUFFIX,who.int,DIRECT
+DOMAIN-SUFFIX,cdc.gov,DIRECT
+DOMAIN-SUFFIX,nice.org.uk,DIRECT
+DOMAIN-SUFFIX,webofscience.com,DIRECT
+DOMAIN-SUFFIX,clarivate.com,DIRECT
+DOMAIN-SUFFIX,dimensions.ai,DIRECT
+DOMAIN-SUFFIX,semanticscholar.org,DIRECT
+DOMAIN-SUFFIX,crossref.org,DIRECT
+DOMAIN-SUFFIX,doi.org,DIRECT
+DOMAIN-SUFFIX,orcid.org,DIRECT
+DOMAIN-SUFFIX,datacite.org,DIRECT
+DOMAIN-SUFFIX,openalex.org,DIRECT
+DOMAIN-SUFFIX,researchgate.net,DIRECT
+DOMAIN-SUFFIX,academia.edu,DIRECT
+DOMAIN-SUFFIX,connectedpapers.com,DIRECT
+DOMAIN-SUFFIX,lens.org,DIRECT
+DOMAIN-SUFFIX,worldcat.org,DIRECT
+DOMAIN-SUFFIX,proquest.com,DIRECT
+DOMAIN-SUFFIX,ebscohost.com,DIRECT
+
+# =========================================================
+# Preprints / open science / data / reference tools
+# =========================================================
+DOMAIN-SUFFIX,arxiv.org,DIRECT
+DOMAIN-SUFFIX,biorxiv.org,DIRECT
+DOMAIN-SUFFIX,medrxiv.org,DIRECT
+DOMAIN-SUFFIX,psyarxiv.com,DIRECT
+DOMAIN-SUFFIX,ssrn.com,DIRECT
+DOMAIN-SUFFIX,osf.io,DIRECT
+DOMAIN-SUFFIX,zenodo.org,DIRECT
+DOMAIN-SUFFIX,figshare.com,DIRECT
+DOMAIN-SUFFIX,datadryad.org,DIRECT
+DOMAIN-SUFFIX,dryad.org,DIRECT
+DOMAIN-SUFFIX,overleaf.com,DIRECT
+DOMAIN-SUFFIX,zotero.org,DIRECT
+DOMAIN-SUFFIX,rayyan.ai,DIRECT
+DOMAIN-SUFFIX,covidence.org,DIRECT
+DOMAIN-SUFFIX,qualtrics.com,DIRECT
+
+# =========================================================
+# Education / institutional TLDs
+# =========================================================
+DOMAIN-SUFFIX,edu,DIRECT
+DOMAIN-SUFFIX,ac.uk,DIRECT
+DOMAIN-SUFFIX,edu.hk,DIRECT
+DOMAIN-SUFFIX,ac.jp,DIRECT
+DOMAIN-SUFFIX,edu.au,DIRECT
+DOMAIN-SUFFIX,ac.nz,DIRECT
+DOMAIN-SUFFIX,edu.sg,DIRECT
+DOMAIN-SUFFIX,edu.tw,DIRECT
+
+# =========================================================
+# Social / messaging
+# =========================================================
+DOMAIN-SUFFIX,facebook.com,DIRECT
+DOMAIN-SUFFIX,fbcdn.net,DIRECT
+DOMAIN-SUFFIX,messenger.com,DIRECT
+DOMAIN-SUFFIX,instagram.com,DIRECT
+DOMAIN-SUFFIX,cdninstagram.com,DIRECT
+DOMAIN-SUFFIX,whatsapp.com,DIRECT
+DOMAIN-SUFFIX,whatsapp.net,DIRECT
+DOMAIN-SUFFIX,x.com,DIRECT
+DOMAIN-SUFFIX,twitter.com,DIRECT
+DOMAIN-SUFFIX,twimg.com,DIRECT
+DOMAIN-SUFFIX,t.co,DIRECT
+DOMAIN-SUFFIX,reddit.com,DIRECT
+DOMAIN-SUFFIX,redd.it,DIRECT
+DOMAIN-SUFFIX,redditstatic.com,DIRECT
+DOMAIN-SUFFIX,redditmedia.com,DIRECT
+DOMAIN-SUFFIX,discord.com,DIRECT
+DOMAIN-SUFFIX,discord.gg,DIRECT
+DOMAIN-SUFFIX,discordapp.com,DIRECT
+DOMAIN-SUFFIX,discordapp.net,DIRECT
+DOMAIN-SUFFIX,telegram.org,DIRECT
+DOMAIN-SUFFIX,telegram.me,DIRECT
+DOMAIN-SUFFIX,t.me,DIRECT
+DOMAIN-SUFFIX,telegram-cdn.org,DIRECT
+DOMAIN-SUFFIX,linkedin.com,DIRECT
+DOMAIN-SUFFIX,licdn.com,DIRECT
+DOMAIN-SUFFIX,pinterest.com,DIRECT
+DOMAIN-SUFFIX,pinimg.com,DIRECT
+DOMAIN-SUFFIX,tumblr.com,DIRECT
+DOMAIN-SUFFIX,mastodon.social,DIRECT
+DOMAIN-SUFFIX,bluesky.com,DIRECT
+DOMAIN-SUFFIX,bsky.app,DIRECT
+DOMAIN-SUFFIX,bsky.network,DIRECT
+
+# =========================================================
+# Productivity / collaboration / design
+# =========================================================
+DOMAIN-SUFFIX,notion.so,DIRECT
+DOMAIN-SUFFIX,notion.site,DIRECT
+DOMAIN-SUFFIX,notion-static.com,DIRECT
+DOMAIN-SUFFIX,slack.com,DIRECT
+DOMAIN-SUFFIX,slack-edge.com,DIRECT
+DOMAIN-SUFFIX,zoom.us,DIRECT
+DOMAIN-SUFFIX,zoom.com,DIRECT
+DOMAIN-SUFFIX,figma.com,DIRECT
+DOMAIN-SUFFIX,figmausercontent.com,DIRECT
+DOMAIN-SUFFIX,canva.com,DIRECT
+DOMAIN-SUFFIX,dropbox.com,DIRECT
+DOMAIN-SUFFIX,dropboxapi.com,DIRECT
+DOMAIN-SUFFIX,dropboxusercontent.com,DIRECT
+DOMAIN-SUFFIX,box.com,DIRECT
+DOMAIN-SUFFIX,evernote.com,DIRECT
+DOMAIN-SUFFIX,trello.com,DIRECT
+DOMAIN-SUFFIX,asana.com,DIRECT
+DOMAIN-SUFFIX,monday.com,DIRECT
+DOMAIN-SUFFIX,miro.com,DIRECT
+DOMAIN-SUFFIX,airtable.com,DIRECT
+DOMAIN-SUFFIX,typeform.com,DIRECT
+DOMAIN-SUFFIX,calendly.com,DIRECT
+DOMAIN-SUFFIX,docusign.com,DIRECT
+
+# =========================================================
+# News / reference
+# =========================================================
+DOMAIN-SUFFIX,bbc.com,DIRECT
+DOMAIN-SUFFIX,bbc.co.uk,DIRECT
+DOMAIN-SUFFIX,reuters.com,DIRECT
+DOMAIN-SUFFIX,apnews.com,DIRECT
+DOMAIN-SUFFIX,theguardian.com,DIRECT
+DOMAIN-SUFFIX,nytimes.com,DIRECT
+DOMAIN-SUFFIX,washingtonpost.com,DIRECT
+DOMAIN-SUFFIX,wsj.com,DIRECT
+DOMAIN-SUFFIX,ft.com,DIRECT
+DOMAIN-SUFFIX,economist.com,DIRECT
+DOMAIN-SUFFIX,bloomberg.com,DIRECT
+DOMAIN-SUFFIX,cnn.com,DIRECT
+DOMAIN-SUFFIX,npr.org,DIRECT
+DOMAIN-SUFFIX,time.com,DIRECT
+DOMAIN-SUFFIX,forbes.com,DIRECT
+DOMAIN-SUFFIX,wired.com,DIRECT
+DOMAIN-SUFFIX,theatlantic.com,DIRECT
+DOMAIN-SUFFIX,newyorker.com,DIRECT
+DOMAIN-SUFFIX,wikipedia.org,DIRECT
+DOMAIN-SUFFIX,wikimedia.org,DIRECT
+DOMAIN-SUFFIX,wikimediafoundation.org,DIRECT
+DOMAIN-SUFFIX,wikidata.org,DIRECT
+DOMAIN-SUFFIX,wiktionary.org,DIRECT
+DOMAIN-SUFFIX,wikibooks.org,DIRECT
+DOMAIN-SUFFIX,wikiquote.org,DIRECT
+DOMAIN-SUFFIX,wikisource.org,DIRECT
+DOMAIN-SUFFIX,wikivoyage.org,DIRECT
+DOMAIN-SUFFIX,wikinews.org,DIRECT
+
+# =========================================================
+# Streaming / media — Hong Kong region
+# =========================================================
+DOMAIN-SUFFIX,netflix.com,DIRECT
+DOMAIN-SUFFIX,nflxvideo.net,DIRECT
+DOMAIN-SUFFIX,nflximg.net,DIRECT
+DOMAIN-SUFFIX,nflxso.net,DIRECT
+DOMAIN-SUFFIX,nflxext.com,DIRECT
+DOMAIN-SUFFIX,spotify.com,DIRECT
+DOMAIN-SUFFIX,scdn.co,DIRECT
+DOMAIN-SUFFIX,spotifycdn.com,DIRECT
+DOMAIN-SUFFIX,disneyplus.com,DIRECT
+DOMAIN-SUFFIX,disney-plus.net,DIRECT
+DOMAIN-SUFFIX,dssott.com,DIRECT
+DOMAIN-SUFFIX,max.com,DIRECT
+DOMAIN-SUFFIX,hbomax.com,DIRECT
+DOMAIN-SUFFIX,hbo.com,DIRECT
+DOMAIN-SUFFIX,primevideo.com,DIRECT
+DOMAIN-SUFFIX,amazonvideo.com,DIRECT
+DOMAIN-SUFFIX,twitch.tv,DIRECT
+DOMAIN-SUFFIX,ttvnw.net,DIRECT
+DOMAIN-SUFFIX,vimeo.com,DIRECT
+DOMAIN-SUFFIX,vimeocdn.com,DIRECT
+DOMAIN-SUFFIX,soundcloud.com,DIRECT
+DOMAIN-SUFFIX,sndcdn.com,DIRECT
+DOMAIN-SUFFIX,deezer.com,DIRECT
+DOMAIN-SUFFIX,tidal.com,DIRECT
+DOMAIN-SUFFIX,plex.tv,DIRECT
+
+# =========================================================
+# Travel / maps / transport
+# =========================================================
+DOMAIN-SUFFIX,booking.com,DIRECT
+DOMAIN-SUFFIX,agoda.com,DIRECT
+DOMAIN-SUFFIX,tripadvisor.com,DIRECT
+DOMAIN-SUFFIX,airbnb.com,DIRECT
+DOMAIN-SUFFIX,uber.com,DIRECT
+DOMAIN-SUFFIX,expedia.com,DIRECT
+DOMAIN-SUFFIX,hotels.com,DIRECT
+DOMAIN-SUFFIX,skyscanner.com,DIRECT
+DOMAIN-SUFFIX,kayak.com,DIRECT
+DOMAIN-SUFFIX,rome2rio.com,DIRECT
+DOMAIN-SUFFIX,openstreetmap.org,DIRECT
+DOMAIN-SUFFIX,mapbox.com,DIRECT
+DOMAIN-SUFFIX,here.com,DIRECT
+DOMAIN-SUFFIX,cathaypacific.com,DIRECT
+DOMAIN-SUFFIX,hkexpress.com,DIRECT
+
+# =========================================================
+# Shopping / payments
+# =========================================================
+DOMAIN-SUFFIX,amazon.com,DIRECT
+DOMAIN-SUFFIX,amazon.co.uk,DIRECT
+DOMAIN-SUFFIX,amazon.co.jp,DIRECT
+DOMAIN-SUFFIX,ebay.com,DIRECT
+DOMAIN-SUFFIX,paypal.com,DIRECT
+DOMAIN-SUFFIX,paypalobjects.com,DIRECT
+DOMAIN-SUFFIX,wise.com,DIRECT
+DOMAIN-SUFFIX,revolut.com,DIRECT
+DOMAIN-SUFFIX,iherb.com,DIRECT
+DOMAIN-SUFFIX,etsy.com,DIRECT
+DOMAIN-SUFFIX,shopify.com,DIRECT
+DOMAIN-SUFFIX,shopifycdn.com,DIRECT
+
+# =========================================================
+# Cloud / storage / web tools — domain only
+# =========================================================
+DOMAIN-SUFFIX,cloudflarestatus.com,DIRECT
+DOMAIN-SUFFIX,fastly.com,DIRECT
+DOMAIN-SUFFIX,fastly.net,DIRECT
+DOMAIN-SUFFIX,digitalocean.com,DIRECT
+DOMAIN-SUFFIX,linode.com,DIRECT
+DOMAIN-SUFFIX,vultr.com,DIRECT
+DOMAIN-SUFFIX,heroku.com,DIRECT
+DOMAIN-SUFFIX,vercel.com,DIRECT
+DOMAIN-SUFFIX,vercel.app,DIRECT
+DOMAIN-SUFFIX,netlify.com,DIRECT
+DOMAIN-SUFFIX,netlify.app,DIRECT
+DOMAIN-SUFFIX,firebase.google.com,DIRECT
+DOMAIN-SUFFIX,firebaseapp.com,DIRECT
+
+
+# =========================================================
+# Pokémon TCG Pocket — force DIRECT in Hong Kong
+# =========================================================
+# Game / session / API / CDN
+DOMAIN-SUFFIX,app-41283.com,DIRECT
+DOMAIN,prod-game-assets-app-41283.akamaized.net,DIRECT
+DOMAIN-SUFFIX,pokemontcgpocket.com,DIRECT
+DOMAIN,mtcgp.pokemon.com,DIRECT
+DOMAIN,api.mtcgp.pokemon.com,DIRECT
+DOMAIN,cdn.pokemon.com,DIRECT
+
+# Pokémon / DeNA service backends
+DOMAIN-SUFFIX,pokemon.com,DIRECT
+DOMAIN-SUFFIX,dena.com,DIRECT
+DOMAIN-SUFFIX,dena-games.com,DIRECT
+
+# Account linking / authentication
+# Nintendo is explicitly included here; Google and Apple are already covered
+# elsewhere in this HK module.
+DOMAIN-SUFFIX,nintendo.com,DIRECT
+DOMAIN-SUFFIX,nintendo.net,DIRECT
+
+
+# =========================================================
+# AnyDesk — force DIRECT in Hong Kong
+# =========================================================
+# Official AnyDesk firewall guidance recommends allowlisting *.net.anydesk.com.
+# The broader anydesk.com suffix also covers account/web/service endpoints.
+DOMAIN-SUFFIX,net.anydesk.com,DIRECT
+DOMAIN-SUFFIX,anydesk.com,DIRECT
+
+# =========================================================
+# Games / stores / communities
+# =========================================================
+DOMAIN-SUFFIX,steampowered.com,DIRECT
+DOMAIN-SUFFIX,steamcommunity.com,DIRECT
+DOMAIN-SUFFIX,steamstatic.com,DIRECT
+DOMAIN-SUFFIX,steamcontent.com,DIRECT
+DOMAIN-SUFFIX,epicgames.com,DIRECT
+DOMAIN-SUFFIX,epicgamescdn.com,DIRECT
+DOMAIN-SUFFIX,gog.com,DIRECT
+DOMAIN-SUFFIX,battle.net,DIRECT
+DOMAIN-SUFFIX,blizzard.com,DIRECT
+DOMAIN-SUFFIX,playstation.com,DIRECT
+DOMAIN-SUFFIX,xbox.com,DIRECT
+DOMAIN-SUFFIX,nintendo.com,DIRECT
+DOMAIN-SUFFIX,nintendo.net,DIRECT
+
+# =========================================================
+# INTENTIONALLY NOT DIRECT
+# =========================================================
+# OpenAI / ChatGPT:
+# openai.com / chatgpt.com / oaistatic.com / oaiusercontent.com
+# Anthropic / Claude:
+# anthropic.com / claude.ai / claude.com / claudeusercontent.com
+# Broad shared infrastructure also intentionally omitted:
+# cloudflare.com / cloudfront.net / amazonaws.com / generic Fastly shared ranges
+# These continue to fall through to the main config, where FINAL,PROXY is the safety net.
