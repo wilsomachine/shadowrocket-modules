@@ -149,6 +149,47 @@ DOMAIN-SUFFIX,teams.microsoft.com,DIRECT
 DOMAIN-SUFFIX,microsoft365.com,DIRECT
 
 # =========================================================
+# AI services in Hong Kong - explicit service domains
+# =========================================================
+# Service/account/feature availability may vary; verify routes on the device.
+# Additional shared-cloud hosts require service-specific evidence.
+
+# Grok / xAI (web, account, API and first-party assets)
+DOMAIN-SUFFIX,grok.com,DIRECT
+DOMAIN-SUFFIX,x.ai,DIRECT
+
+# Perplexity / Poe
+DOMAIN-SUFFIX,perplexity.ai,DIRECT
+DOMAIN-SUFFIX,pplx.ai,DIRECT
+DOMAIN-SUFFIX,poe.com,DIRECT
+
+# Microsoft Copilot's newer web entry point.
+# copilot.microsoft.com and Gemini are covered by existing rules above.
+DOMAIN-SUFFIX,copilot.com,DIRECT
+
+# DeepSeek / Qwen / Mistral / Doubao
+DOMAIN-SUFFIX,deepseek.com,DIRECT
+DOMAIN-SUFFIX,qwen.ai,DIRECT
+DOMAIN-SUFFIX,qwenlm.io,DIRECT
+DOMAIN-SUFFIX,mistral.ai,DIRECT
+DOMAIN-SUFFIX,doubao.com,DIRECT
+
+# Wenxin / SenseChat - keep the parent company domains out of this addition.
+DOMAIN,wenxin.baidu.com,DIRECT
+DOMAIN,chat.sensetime.com,DIRECT
+
+# AI voice / video
+DOMAIN-SUFFIX,elevenlabs.io,DIRECT
+DOMAIN-SUFFIX,runwayml.com,DIRECT
+DOMAIN-SUFFIX,runway.com,DIRECT
+
+# Adobe Firefly - known web/API endpoints and documented API authentication.
+# ims-na1.adobelogin.com is shared Adobe authentication, not Firefly-exclusive.
+DOMAIN,firefly.adobe.com,DIRECT
+DOMAIN,firefly-api.adobe.io,DIRECT
+DOMAIN,ims-na1.adobelogin.com,DIRECT
+
+# =========================================================
 # GitHub / developer hosting
 # =========================================================
 DOMAIN-SUFFIX,github.com,DIRECT
