@@ -1,5 +1,5 @@
 #!name=HK Direct Override
-#!desc=Aggressive Hong Kong DIRECT override. Unknown traffic still falls through to the main config, so FINAL,PROXY remains the safety net for unrecognised services.
+#!desc=Rules:426 Created:2026-09-19 18:00:00 +08:00
 
 [Rule]
 
