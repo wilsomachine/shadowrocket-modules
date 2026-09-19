@@ -1,5 +1,5 @@
 #!name=HK Direct Override
-#!desc=Rules:426 Created:2026-09-19 18:00:00 +08:00
+#!desc=Rules:433 Created:2026-09-19 18:00:00 +08:00
 
 [Rule]
 
@@ -106,6 +106,7 @@ DOMAIN-SUFFIX,aaplimg.com,DIRECT
 # Google / Gemini / YouTube
 # =========================================================
 DOMAIN-SUFFIX,google.com,DIRECT
+DOMAIN,imap.gmail.com,DIRECT
 DOMAIN-SUFFIX,google.hk,DIRECT
 DOMAIN-SUFFIX,googleapis.com,DIRECT
 DOMAIN-SUFFIX,gstatic.com,DIRECT
@@ -339,12 +340,17 @@ DOMAIN-SUFFIX,rayyan.ai,DIRECT
 DOMAIN-SUFFIX,covidence.org,DIRECT
 DOMAIN-SUFFIX,qualtrics.com,DIRECT
 
+# Scribbr writing tools / QuillBot static assets
+DOMAIN,www.scribbr.com,DIRECT
+DOMAIN,assets.quillbot.com,DIRECT
+
 # =========================================================
 # Education / institutional TLDs
 # =========================================================
 DOMAIN-SUFFIX,edu,DIRECT
 DOMAIN-SUFFIX,ac.uk,DIRECT
 DOMAIN-SUFFIX,edu.hk,DIRECT
+DOMAIN-SUFFIX,hku.hk,DIRECT
 DOMAIN-SUFFIX,ac.jp,DIRECT
 DOMAIN-SUFFIX,edu.au,DIRECT
 DOMAIN-SUFFIX,ac.nz,DIRECT
@@ -354,6 +360,8 @@ DOMAIN-SUFFIX,edu.tw,DIRECT
 # =========================================================
 # Social / messaging
 # =========================================================
+# Snapchat API only; analytics hosts are outside this suffix.
+DOMAIN-SUFFIX,api.snapchat.com,DIRECT
 DOMAIN-SUFFIX,facebook.com,DIRECT
 DOMAIN-SUFFIX,fbcdn.net,DIRECT
 DOMAIN-SUFFIX,messenger.com,DIRECT
@@ -446,6 +454,9 @@ DOMAIN-SUFFIX,wikisource.org,DIRECT
 DOMAIN-SUFFIX,wikivoyage.org,DIRECT
 DOMAIN-SUFFIX,wikinews.org,DIRECT
 
+# Yahoo Finance market data
+DOMAIN,mobile-query.finance.yahoo.com,DIRECT
+
 # =========================================================
 # Streaming / media — Hong Kong region
 # =========================================================
@@ -527,6 +538,11 @@ DOMAIN-SUFFIX,netlify.app,DIRECT
 DOMAIN-SUFFIX,firebase.google.com,DIRECT
 DOMAIN-SUFFIX,firebaseapp.com,DIRECT
 
+
+# =========================================================
+# Niantic game service
+# =========================================================
+DOMAIN,ichigo-rel.nianticlabs.com,DIRECT
 
 # =========================================================
 # Pokémon TCG Pocket — force DIRECT in Hong Kong
