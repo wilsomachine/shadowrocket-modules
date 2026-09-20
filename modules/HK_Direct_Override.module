@@ -1,5 +1,5 @@
 #!name=HK Direct Override
-#!desc=Rules:433 Created:2026-09-19 18:00:00 +08:00
+#!desc=Rules:440 Created:2026-09-19 18:00:00 +08:00
 
 [Rule]
 
@@ -101,6 +101,15 @@ DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
 DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 DOMAIN-SUFFIX,cdn-apple.com,DIRECT
 DOMAIN-SUFFIX,aaplimg.com,DIRECT
+
+# Exact Apple destination IPs; no broad Apple network override.
+IP-CIDR,17.188.169.132/32,DIRECT,no-resolve
+IP-CIDR,17.188.171.27/32,DIRECT,no-resolve
+IP-CIDR,17.188.178.58/32,DIRECT,no-resolve
+IP-CIDR,17.188.178.196/32,DIRECT,no-resolve
+IP-CIDR,17.188.182.207/32,DIRECT,no-resolve
+IP-CIDR,17.253.145.10/32,DIRECT,no-resolve
+IP-CIDR,17.253.150.10/32,DIRECT,no-resolve
 
 # =========================================================
 # Google / Gemini / YouTube
