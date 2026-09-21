@@ -1,5 +1,5 @@
 #!name=HK Direct Override
-#!desc=Rules:440 Created:2026-09-19 18:00:00 +08:00
+#!desc=Rules:441 Created:2026-09-19 18:00:00 +08:00
 
 [Rule]
 
@@ -10,6 +10,9 @@
 # It intentionally avoids broad shared-cloud rules (Cloudflare/AWS/Fastly IP ranges).
 # OpenAI / ChatGPT / Anthropic / Claude are intentionally NOT added.
 # Unknown domains fall through to the main config and therefore still hit FINAL,PROXY.
+
+# User-requested exact endpoint
+DOMAIN,bs.example.com,DIRECT
 
 
 # =========================================================
