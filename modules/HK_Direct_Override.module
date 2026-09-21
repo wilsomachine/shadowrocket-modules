@@ -1,5 +1,5 @@
 #!name=HK Direct Override
-#!desc=Rules:441 Created:2026-09-19 18:00:00 +08:00
+#!desc=Rules:448 Created:2026-09-19 18:00:00 +08:00
 
 [Rule]
 
@@ -23,6 +23,7 @@ DOMAIN,bs.example.com,DIRECT
 # They force DIRECT even when a Hong Kong service is delivered from an overseas CDN/IP.
 DOMAIN-SUFFIX,hsbc.com.hk,DIRECT
 DOMAIN-SUFFIX,hsbc.com,DIRECT
+DOMAIN,hsbc.edge.sdk.awswaf.com,DIRECT
 DOMAIN-SUFFIX,hangseng.com,DIRECT
 DOMAIN-SUFFIX,bochk.com,DIRECT
 DOMAIN-SUFFIX,sc.com,DIRECT
@@ -434,6 +435,12 @@ DOMAIN-SUFFIX,typeform.com,DIRECT
 DOMAIN-SUFFIX,calendly.com,DIRECT
 DOMAIN-SUFFIX,docusign.com,DIRECT
 
+# Serviceform site widget endpoints
+DOMAIN,dash.serviceform.com,DIRECT
+DOMAIN,statistics.serviceform.com,DIRECT
+DOMAIN,images2.serviceform.com,DIRECT
+DOMAIN,cdn.serviceform.com,DIRECT
+
 # =========================================================
 # News / reference
 # =========================================================
@@ -468,6 +475,7 @@ DOMAIN-SUFFIX,wikinews.org,DIRECT
 
 # Yahoo Finance market data
 DOMAIN,mobile-query.finance.yahoo.com,DIRECT
+DOMAIN,guce.oath.com,DIRECT
 
 # =========================================================
 # Streaming / media — Hong Kong region
@@ -502,6 +510,7 @@ DOMAIN-SUFFIX,plex.tv,DIRECT
 # Travel / maps / transport
 # =========================================================
 DOMAIN-SUFFIX,booking.com,DIRECT
+DOMAIN-SUFFIX,clickrent.es,DIRECT
 DOMAIN-SUFFIX,agoda.com,DIRECT
 DOMAIN-SUFFIX,tripadvisor.com,DIRECT
 DOMAIN-SUFFIX,airbnb.com,DIRECT
