@@ -1,5 +1,5 @@
 #!name=Claude and OpenAI Proxy
-#!desc=Rules:10 Created:2026-10-09 18:28:15 +08:00
+#!desc=Rules:12 Created:2026-10-09 18:28:15 +08:00
 
 [Rule]
 
@@ -20,8 +20,11 @@ DOMAIN-SUFFIX,anthropic.com,PROXY
 DOMAIN-SUFFIX,claude.ai,PROXY
 DOMAIN-SUFFIX,claude.com,PROXY
 DOMAIN-SUFFIX,claudeusercontent.com,PROXY
+DOMAIN-SUFFIX,claude.app,PROXY
+DOMAIN-SUFFIX,claudemcpcontent.com,PROXY
 
 # Auxiliary reference: https://github.com/waltcow/chatgpt-openclash
 # Current endpoint references:
 # https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps
 # https://support.claude.com/en/articles/13065128-claude-in-chrome-admin-controls
+# https://code.claude.com/docs/en/desktop#network-access-requirements
