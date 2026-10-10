@@ -1,5 +1,5 @@
 #!name=Claude and OpenAI Proxy
-#!desc=Rules:12 Created:2026-10-09 18:28:15 +08:00
+#!desc=Rules:13 Created:2026-10-10 20:18:12 +08:00
 
 [Rule]
 
@@ -14,6 +14,7 @@ DOMAIN-SUFFIX,oaistatic.com,PROXY
 DOMAIN-SUFFIX,oaiusercontent.com,PROXY
 DOMAIN-SUFFIX,oaistatsig.com,PROXY
 DOMAIN,cdn.openaimerge.com,PROXY
+DOMAIN,o33249.ingest.us.sentry.io,PROXY
 
 # Anthropic / Claude: service domains, API, platform and content bridge.
 DOMAIN-SUFFIX,anthropic.com,PROXY
