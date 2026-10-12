@@ -1,7 +1,7 @@
 #!name=Claude and OpenAI Proxy
-#!desc=Rules:5457 Created:2026-10-11 14:30:07 +08:00
+#!desc=Rules:5552 Created:2026-10-12 15:33:29 +08:00
 
-# Claude/OpenAI PROXY, merged existing HK coverage, and 5000 new Hong Kong hosts.
+# Claude/OpenAI PROXY, merged HK coverage, and exact regional service routes.
 # Module order: this module, independently subscribed direct_list, then reject_list.
 # Disable the separate HK Direct Override after installing this merged module.
 # The 13 original AI PROXY rules remain first; main fallback stays FINAL,PROXY.
@@ -5660,6 +5660,126 @@ DOMAIN,realife.com.hk,DIRECT
 DOMAIN,sangeetha.com.hk,DIRECT
 DOMAIN,seagroup.com.hk,DIRECT
 DOMAIN,shamrock.com.hk,DIRECT
+
+# Additional exact public-service routes for China and Hong Kong.
+# Targeted functional endpoint pins coexist with the independently updated direct_list.
+# Regional service evidence and public DNS do not certify per-ISP or full-feature access.
+# Shared AI dependencies, uncertain aliases, telemetry and raw IPs are not expanded here.
+
+# Tencent public mail, downloads and IM
+DOMAIN,cgi.connect.qq.com,DIRECT
+DOMAIN,dldir1v6.qq.com,DIRECT
+DOMAIN,gtimg.wechatpay.cn,DIRECT
+DOMAIN,imap.qq.com,DIRECT
+DOMAIN,launchwxacode.wxqcloud.qq.com.cn,DIRECT
+DOMAIN,prewxacode.wxqcloud.qq.com.cn,DIRECT
+DOMAIN,shortconn.im.qcloud.com,DIRECT
+
+# Xiaohongshu public pages, APIs and media
+DOMAIN,edith.xiaohongshu.com,DIRECT
+DOMAIN,fe-static.xhscdn.com,DIRECT
+DOMAIN,fe-video-qc.xhscdn.com,DIRECT
+DOMAIN,feresource.xiaohongshu.com,DIRECT
+DOMAIN,live-i1.xhscdn.com,DIRECT
+DOMAIN,live-source-play-bak-tx.xhscdn.com,DIRECT
+DOMAIN,live-source-play.xhscdn.com,DIRECT
+DOMAIN,live-ws.xhscdn.com,DIRECT
+DOMAIN,mall-i8.xhscdn.com,DIRECT
+DOMAIN,mediacloud.xiaohongshu.com,DIRECT
+DOMAIN,msg-img.xhscdn.com,DIRECT
+DOMAIN,oia.xiaohongshu.com,DIRECT
+DOMAIN,pages.xiaohongshu.com,DIRECT
+DOMAIN,qimg.xiaohongshu.com,DIRECT
+DOMAIN,sns-avatar-qc.xhscdn.com,DIRECT
+DOMAIN,sns-music-img.xhscdn.com,DIRECT
+DOMAIN,sns-music.xhscdn.com,DIRECT
+DOMAIN,sns-na-i1.xhscdn.com,DIRECT
+DOMAIN,sns-na-i11.xhscdn.com,DIRECT
+DOMAIN,sns-na-i14.xhscdn.com,DIRECT
+DOMAIN,sns-na-i28.xhscdn.com,DIRECT
+DOMAIN,sns-na-i4.xhscdn.com,DIRECT
+DOMAIN,sns-note-i11.xhscdn.com,DIRECT
+DOMAIN,sns-video-qc.xhscdn.com,DIRECT
+DOMAIN,sns-video-v14.xhscdn.com,DIRECT
+DOMAIN,sns-video-v27.xhscdn.com,DIRECT
+DOMAIN,sns-video-zl.xhscdn.com,DIRECT
+DOMAIN,sns-webpic-qc.xhscdn.com,DIRECT
+DOMAIN,www.xiaohongshu.com,DIRECT
+DOMAIN,xhslive-sfg.xhscdn.com,DIRECT
+
+# Douyin core API, playback and media
+DOMAIN,api-normal-m.amemv.com,DIRECT
+DOMAIN,api-play-zjg.amemv.com,DIRECT
+DOMAIN,api-play.amemv.com,DIRECT
+DOMAIN,api.amemv.com,DIRECT
+DOMAIN,api3-normal-c-lf.amemv.com,DIRECT
+DOMAIN,aweme.snssdk.com,DIRECT
+DOMAIN,p9.douyinpic.com,DIRECT
+DOMAIN,pull-flv-h11.douyincdn.com,DIRECT
+DOMAIN,pull-flv-h26.douyincdn.com,DIRECT
+DOMAIN,pull-flv-t11.douyincdn.com,DIRECT
+DOMAIN,pull-lls-cold-f5.douyincdn.com,DIRECT
+DOMAIN,v11-colds.douyinvod.com,DIRECT
+DOMAIN,v5-se-ws.douyinvod.com,DIRECT
+DOMAIN,v9-awememusicpgc.amemv.com,DIRECT
+DOMAIN,webcast-core-m.amemv.com,DIRECT
+DOMAIN,webcast-normal-m.amemv.com,DIRECT
+
+# JD public shopping, login and assets
+DOMAIN,api.m.jd.com,DIRECT
+DOMAIN,apk.360buyimg.com,DIRECT
+DOMAIN,h5.360buyimg.com,DIRECT
+DOMAIN,img10.360buyimg.com,DIRECT
+DOMAIN,img11.360buyimg.com,DIRECT
+DOMAIN,img12.360buyimg.com,DIRECT
+DOMAIN,img13.360buyimg.com,DIRECT
+DOMAIN,img14.360buyimg.com,DIRECT
+DOMAIN,img20.360buyimg.com,DIRECT
+DOMAIN,img30.360buyimg.com,DIRECT
+DOMAIN,m.360buyimg.com,DIRECT
+DOMAIN,m13.360buyimg.com,DIRECT
+DOMAIN,misc.360buyimg.com,DIRECT
+DOMAIN,plogin.m.jd.com,DIRECT
+DOMAIN,static.360buyimg.com,DIRECT
+DOMAIN,storage.360buyimg.com,DIRECT
+DOMAIN,storage.jd.com,DIRECT
+DOMAIN,storage23.360buyimg.com,DIRECT
+
+# Taobao public shopping and assets
+DOMAIN,acs.m.taobao.com,DIRECT
+DOMAIN,g.alicdn.com,DIRECT
+DOMAIN,guide-acs.m.taobao.com,DIRECT
+DOMAIN,orange-dc.m.taobao.com,DIRECT
+DOMAIN,pingjia.alicdn.com,DIRECT
+DOMAIN,tiga-release-dc.m.taobao.com,DIRECT
+DOMAIN,trade-acs.m.taobao.com,DIRECT
+DOMAIN,video-sh.cloudvideocdn.taobao.com,DIRECT
+
+# Alipay public payment gateway and static assets
+DOMAIN,gw.alipayobjects.com,DIRECT
+DOMAIN,mdn.alipayobjects.com,DIRECT
+DOMAIN,mgw.alipay.com,DIRECT
+DOMAIN,mobilegw.alipay.com,DIRECT
+
+# Huawei public routing, device, account and terms
+DOMAIN,contentcenter-drcn.dbankcdn.cn,DIRECT
+DOMAIN,grs.dbankcloud.asia,DIRECT
+DOMAIN,grs.dbankcloud.cn,DIRECT
+DOMAIN,grs.dbankcloud.com,DIRECT
+DOMAIN,hwid.platform.hicloud.com,DIRECT
+DOMAIN,oauth-login.platform.hicloud.com,DIRECT
+DOMAIN,terms-drcn.platform.dbankcloud.cn,DIRECT
+
+# Youdao dictionary
+DOMAIN,dict.youdao.com,DIRECT
+
+# URBTIX public ticketing
+DOMAIN,www.urbtix.hk,DIRECT
+
+# Cityline public cross-border ticketing
+DOMAIN,cultural.cityline.com,DIRECT
+DOMAIN,shows.cityline.com,DIRECT
+DOMAIN,www.cityline.com,DIRECT
 
 # Auxiliary original endpoint references:
 # https://github.com/waltcow/chatgpt-openclash
