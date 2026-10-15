@@ -1,5 +1,5 @@
 #!name=Claude and OpenAI Proxy
-#!desc=Rules:5552 Created:2026-10-12 15:33:29 +08:00
+#!desc=Rules:5556 Created:2026-10-15 11:21:50 +08:00
 
 # Claude/OpenAI PROXY, merged HK coverage, and exact regional service routes.
 # Module order: this module, independently subscribed direct_list, then reject_list.
@@ -528,6 +528,9 @@ DOMAIN-SUFFIX,scdn.co,DIRECT
 DOMAIN-SUFFIX,spotifycdn.com,DIRECT
 DOMAIN-SUFFIX,disneyplus.com,DIRECT
 DOMAIN-SUFFIX,disney-plus.net,DIRECT
+DOMAIN-SUFFIX,bamgrid.com,DIRECT
+DOMAIN-SUFFIX,disney.com,DIRECT
+DOMAIN-SUFFIX,dssedge.com,DIRECT
 DOMAIN-SUFFIX,dssott.com,DIRECT
 DOMAIN-SUFFIX,max.com,DIRECT
 DOMAIN-SUFFIX,hbomax.com,DIRECT
@@ -542,6 +545,7 @@ DOMAIN-SUFFIX,soundcloud.com,DIRECT
 DOMAIN-SUFFIX,sndcdn.com,DIRECT
 DOMAIN-SUFFIX,deezer.com,DIRECT
 DOMAIN-SUFFIX,tidal.com,DIRECT
+DOMAIN-SUFFIX,crunchyroll.com,DIRECT
 DOMAIN-SUFFIX,plex.tv,DIRECT
 
 # =========================================================
